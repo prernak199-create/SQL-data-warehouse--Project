@@ -38,6 +38,17 @@ select prd_key,COUNT(*)FROM (
 HAVING COUNT(*) > 1;
 ----------------------------------------------------------------------------------------------------------------------------------------
 
+---CHECKING FOR Foreign key Integrity (Dimensions) in VIEWS 'gold.fact_sales'
+select* from gold.fact_sales;
+--EXPECTATION: No Result
+select *
+from gold.fact_sales f
+LEFT JOIN gold.dim_customers c
+ON c.cutomer_key = f.customer_key
+WHERE c.cutomer_key IS NULL
+
+
+
   
 
 
